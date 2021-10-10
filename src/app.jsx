@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import Insert from "./components/insert";
 import Template from "./components/template";
 
 const GlobalStyle = createGlobalStyle`
@@ -11,7 +12,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Template />
+      <Template>
+        <Insert />
+      </Template>
     </>
   );
 }

@@ -8,12 +8,12 @@ const Wrapper = styled.div`
   overflow-y: auto;
 `;
 
-const List = () => {
+const List = ({ toDos }) => {
   return (
     <Wrapper>
-      <ListItem />
-      <ListItem />
-      <ListItem />
+      {toDos.map((toDo) => (
+        <ListItem toDo={toDo} key={toDo.id} />
+      ))}
     </Wrapper>
   );
 };

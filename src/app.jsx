@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 import Insert from "./components/insert";
 import List from "./components/list";
@@ -28,11 +28,27 @@ const App = () => {
       checked: false,
     },
   ]);
+
+  // For key id of new list component
+  const nextId = useRef(4);
+
+  const onInsert = useCallback(
+    (text) => {
+      const toDo = {
+        id: nextId.current,
+        text,
+        checked: false,
+      };
+      setToDos(toDos.concat(toDo));
+      nextId.current += 1;
+    },
+    [toDos]
+  );
   return (
     <>
       <GlobalStyle />
       <Template>
-        <Insert />
+        <Insert onInsert={onInsert} />
         <List toDos={toDos} />
       </Template>
     </>

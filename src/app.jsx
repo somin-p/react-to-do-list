@@ -52,12 +52,20 @@ const App = () => {
     [toDos]
   );
 
+  const onToggle = useCallback((id) => {
+    setToDos(
+      toDos.map((toDo) =>
+        toDo.id === id ? { ...toDo, checked: !toDo.checked } : toDo
+      )
+    );
+  });
+
   return (
     <>
       <GlobalStyle />
       <Template>
         <Insert onInsert={onInsert} />
-        <List toDos={toDos} onRemove={onRemove} />
+        <List toDos={toDos} onRemove={onRemove} onToggle={onToggle} />
       </Template>
     </>
   );

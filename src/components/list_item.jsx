@@ -57,12 +57,12 @@ const Remove = styled.div`
   }
 `;
 
-const ListItem = ({ toDo, onRemove }) => {
+const ListItem = ({ toDo, onRemove, onToggle }) => {
   const { id, text, checked } = toDo;
 
   return (
     <Wrapper>
-      <CheckBox checked={checked}>
+      <CheckBox checked={checked} onClick={() => onToggle(id)}>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <Text checked={checked}>{text}</Text>
       </CheckBox>

@@ -8,11 +8,16 @@ const Wrapper = styled.div`
   overflow-y: auto;
 `;
 
-const List = ({ toDos, onRemove }) => {
+const List = ({ toDos, onRemove, onToggle }) => {
   return (
     <Wrapper>
       {toDos.map((toDo) => (
-        <ListItem toDo={toDo} key={toDo.id} onRemove={onRemove} />
+        <ListItem
+          toDo={toDo}
+          key={toDo.id}
+          onRemove={onRemove}
+          onToggle={onToggle}
+        />
       ))}
     </Wrapper>
   );

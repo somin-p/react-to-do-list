@@ -44,12 +44,20 @@ const App = () => {
     },
     [toDos]
   );
+
+  const onRemove = useCallback(
+    (id) => {
+      setToDos(toDos.filter((toDo) => toDo.id !== id));
+    },
+    [toDos]
+  );
+
   return (
     <>
       <GlobalStyle />
       <Template>
         <Insert onInsert={onInsert} />
-        <List toDos={toDos} />
+        <List toDos={toDos} onRemove={onRemove} />
       </Template>
     </>
   );
